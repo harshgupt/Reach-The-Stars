@@ -205,7 +205,7 @@ GameObject:
   - component: {fileID: 695162831}
   m_Layer: 0
   m_Name: Bouncing Star
-  m_TagString: Untagged
+  m_TagString: Bouncing Star
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -499,9 +499,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1896219877}
   - component: {fileID: 1896219876}
+  - component: {fileID: 1896219878}
   m_Layer: 0
   m_Name: Bubble
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -564,3 +565,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1896219878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1896219875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70484b5da63510440b417d0a943f0a16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1896219875}
+  audioSource: {fileID: 0}
+  appleHit: {fileID: 0}
+  goldCollect: {fileID: 0}
+  silverCollect: {fileID: 0}
+  appleSplat: {fileID: 0}
