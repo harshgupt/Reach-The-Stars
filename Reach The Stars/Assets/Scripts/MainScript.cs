@@ -37,7 +37,6 @@ public class MainScript : MonoBehaviour {
         homeButton.SetActive(false);
         playAgainButton.SetActive(false);
         highscoreButton.SetActive(false);
-        mainObject.GetComponent<AppleSpawner>().enabled = false;
     }
 
     private void Update()
@@ -59,7 +58,6 @@ public class MainScript : MonoBehaviour {
         tutorialImage.SetActive(false);
         quitButton.SetActive(false);
         homeButton.SetActive(true);
-        mainObject.GetComponent<AppleSpawner>().enabled = true;
         CharacterController.speed = 10.0f;
     }
 
@@ -89,7 +87,6 @@ public class MainScript : MonoBehaviour {
         {
             Destroy(apple);
         }
-        mainObject.GetComponent<AppleSpawner>().enabled = false;
         scoreAnimator.SetTrigger("GameOver");
         bgAnimator.SetTrigger("GameOver");
         playAgainButton.SetActive(true);

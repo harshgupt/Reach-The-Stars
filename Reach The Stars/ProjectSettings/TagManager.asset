@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Bouncing Star
   - Star Shadow
+  - Wall Left
+  - Wall Right
+  - Wall Bottom
   layers:
   - Default
   - TransparentFX
