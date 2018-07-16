@@ -5,23 +5,33 @@ using UnityEngine;
 public class StarSpawner : MonoBehaviour {
 
     public Transform starShadow;
+    public Transform background;
 
     public float starSpawnTime;
-    public float spawnTimer;
+    public float backgroundSpawnTime;
+    public float starSpawnTimer;
+    public float backgroundSpawnTimer;
 
     private void Start()
     {
         starSpawnTime = 2f;
+        backgroundSpawnTime = 20f;
     }
 
     private void Update()
     {
-        spawnTimer += Time.deltaTime;
-        if(spawnTimer >= starSpawnTime)
+        starSpawnTimer += Time.deltaTime;
+        if(starSpawnTimer >= starSpawnTime)
         {
-            spawnTimer = 0;
+            starSpawnTimer = 0;
             SpawnStar();
             starSpawnTime = Random.Range(2f, 5f);
+        }
+        backgroundSpawnTimer += Time.deltaTime;
+        if(backgroundSpawnTimer >= backgroundSpawnTime)
+        {
+            backgroundSpawnTimer = 0;
+            SpawnBackground();
         }
     }
 
@@ -30,5 +40,11 @@ public class StarSpawner : MonoBehaviour {
         float randX = Random.Range(-2.5f, 2.5f);
         Vector3 position = new Vector3(randX, 5f);
         Instantiate(starShadow, position, Quaternion.Euler(0, 0, Random.Range(0f, 360f)));
+    }
+
+    public void SpawnBackground()
+    {
+        Vector3 position = new Vector3(0, 12f);
+        Instantiate(background, position, Quaternion.identity);
     }
 }
