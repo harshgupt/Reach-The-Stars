@@ -6,7 +6,7 @@ public class CharacterController : MonoBehaviour {
 
     public GameObject player;
 
-    public static float speed = 10f;
+    public static float speed = 100f;
 
     void Update ()
     {

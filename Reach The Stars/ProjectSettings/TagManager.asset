@@ -9,6 +9,7 @@ TagManager:
   - Wall Left
   - Wall Right
   - Wall Bottom
+  - Bright Star
   layers:
   - Default
   - TransparentFX

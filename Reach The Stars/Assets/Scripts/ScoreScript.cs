@@ -5,8 +5,9 @@ using UnityEngine.UI;
 
 public class ScoreScript : MonoBehaviour {
 
-    public Text scoreObject;
     public static int score;
+
+    public Text scoreObject;
     public Text hs1;
     public Text hs2;
     public Text hs3;

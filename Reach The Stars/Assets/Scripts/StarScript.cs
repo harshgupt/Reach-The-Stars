@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class StarScript : MonoBehaviour {
 
+    public Sprite brightStar;
+    public SpriteRenderer spriteRenderer;
+
     private void Update()
     {
 
@@ -28,7 +31,13 @@ public class StarScript : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "Wall Bottom")
+        if (collision.gameObject.tag == "Star Shadow")
+        {
+            spriteRenderer = collision.GetComponent<SpriteRenderer>();
+            spriteRenderer.sprite = brightStar;
+            collision.gameObject.tag = "Bright Star";
+        }
+        else if(collision.gameObject.tag == "Wall Bottom")
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
