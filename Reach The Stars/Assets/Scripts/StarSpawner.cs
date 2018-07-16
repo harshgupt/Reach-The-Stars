@@ -9,14 +9,19 @@ public class StarSpawner : MonoBehaviour {
     public float starSpawnTime;
     public float spawnTimer;
 
-    private void Update()
+    private void Start()
     {
         starSpawnTime = 2f;
+    }
+
+    private void Update()
+    {
         spawnTimer += Time.deltaTime;
         if(spawnTimer >= starSpawnTime)
         {
             spawnTimer = 0;
             SpawnStar();
+            starSpawnTime = Random.Range(2f, 5f);
         }
     }
 

@@ -21,10 +21,10 @@ public class ScoreScript : MonoBehaviour {
 
     private void Update()
     {
-        scoreObject.text = score.ToString();
+        //scoreObject.text = score.ToString();
         if (MainScript.isGameOver)
         {
-            CheckAndSort();
+            //CheckAndSort();
         }
 
     }

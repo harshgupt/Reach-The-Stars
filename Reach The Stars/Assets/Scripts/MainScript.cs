@@ -72,21 +72,6 @@ public class MainScript : MonoBehaviour {
 
     public void OnGameOver()
     {
-        GameObject[] apples = GameObject.FindGameObjectsWithTag("Apple");
-        foreach(GameObject apple in apples)
-        {
-            Destroy(apple);
-        }
-        GameObject[] silverApples = GameObject.FindGameObjectsWithTag("Silver Apple");
-        foreach (GameObject apple in silverApples)
-        {
-            Destroy(apple);
-        }
-        GameObject[] goldApples = GameObject.FindGameObjectsWithTag("Golden Apple");
-        foreach (GameObject apple in goldApples)
-        {
-            Destroy(apple);
-        }
         scoreAnimator.SetTrigger("GameOver");
         bgAnimator.SetTrigger("GameOver");
         playAgainButton.SetActive(true);

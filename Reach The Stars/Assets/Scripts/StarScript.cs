@@ -35,6 +35,8 @@ public class StarScript : MonoBehaviour {
         {
             spriteRenderer = collision.GetComponent<SpriteRenderer>();
             spriteRenderer.sprite = brightStar;
+            ScoreScript.score += 1;
+            Debug.Log(ScoreScript.score);
             collision.gameObject.tag = "Bright Star";
         }
         else if(collision.gameObject.tag == "Wall Bottom")
