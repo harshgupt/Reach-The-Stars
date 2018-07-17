@@ -12,10 +12,12 @@ public class StarSpawner : MonoBehaviour {
     public float starSpawnTimer;
     public float backgroundSpawnTimer;
 
+    public static bool spawnStars;
+
     private void Start()
     {
         starSpawnTime = 2f;
-        backgroundSpawnTime = 20f;
+        backgroundSpawnTime = 18f;
     }
 
     private void Update()
@@ -24,7 +26,10 @@ public class StarSpawner : MonoBehaviour {
         if(starSpawnTimer >= starSpawnTime)
         {
             starSpawnTimer = 0;
-            SpawnStar();
+            if (spawnStars)
+            {
+                SpawnStar();
+            }
             starSpawnTime = Random.Range(2f, 5f);
         }
         backgroundSpawnTimer += Time.deltaTime;

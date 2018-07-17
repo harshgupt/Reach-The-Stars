@@ -38,7 +38,7 @@ public class MainScript : MonoBehaviour {
         homeButton.SetActive(false);
         playAgainButton.SetActive(false);
         highscoreButton.SetActive(false);
-        mainObject.GetComponent<StarSpawner>().enabled = false;
+        StarSpawner.spawnStars = false;
     }
 
     private void Update()
@@ -62,7 +62,7 @@ public class MainScript : MonoBehaviour {
         bouncingStar.SetActive(true);
         scoreValue.SetActive(true);
         homeButton.SetActive(true);
-        mainObject.GetComponent<StarSpawner>().enabled = true;
+        StarSpawner.spawnStars = true;
         CharacterController.speed = 100.0f;
     }
 
@@ -77,7 +77,7 @@ public class MainScript : MonoBehaviour {
     public void OnGameOver()
     {
         scoreAnimator.SetTrigger("gameOver");
-        mainObject.GetComponent<StarSpawner>().enabled = false;
+        StarSpawner.spawnStars = false;
         playAgainButton.SetActive(true);
         highscoreButton.SetActive(true);
         GameObject[] shadowStars = GameObject.FindGameObjectsWithTag("Shadow Star");
@@ -86,7 +86,7 @@ public class MainScript : MonoBehaviour {
             Destroy(star);
         }
         GameObject[] brightStars = GameObject.FindGameObjectsWithTag("Bright Star");
-        foreach (GameObject star in shadowStars)
+        foreach (GameObject star in brightStars)
         {
             Destroy(star);
         }
