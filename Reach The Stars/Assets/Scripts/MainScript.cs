@@ -6,37 +6,39 @@ using UnityEngine.SceneManagement;
 public class MainScript : MonoBehaviour {
 
     public GameObject mainObject;
-    public GameObject mainUI;
     public GameObject title;
     public GameObject playButton;
-    public GameObject tutorialButton;
-    public GameObject tutorialImage;
+    //public GameObject tutorialButton;
+    //public GameObject tutorialImage;
     public GameObject quitButton;
     public GameObject homeButton;
     public GameObject playAgainButton;
     public GameObject highscoreButton;
     public GameObject highscoreScreen;
     public GameObject scoreValue;
+    public GameObject bubble;
+    public GameObject bouncingStar;
+
     public static bool isGameOver;
+
     public Animator scoreAnimator;
-    public Animator bgAnimator;
-    public Animator playButtonAnimator;
-    public Animator playAgainButtonAnimator;
-    public Animator highscoreButtonAnimator;
-    public AudioSource audioSource;
-    public AudioClip buttonPress;
+
+    //public AudioSource audioSource;
+    //public AudioClip buttonPress;
 
     private void Start()
     {
-        mainUI.SetActive(true);
         title.SetActive(true);
         playButton.SetActive(true);
-        tutorialButton.SetActive(true);
-        tutorialImage.SetActive(false);
+        //tutorialButton.SetActive(true);
+        //tutorialImage.SetActive(false);
         quitButton.SetActive(true);
+        bubble.SetActive(false);
+        bouncingStar.SetActive(false);
         homeButton.SetActive(false);
         playAgainButton.SetActive(false);
         highscoreButton.SetActive(false);
+        mainObject.GetComponent<StarSpawner>().enabled = false;
     }
 
     private void Update()
@@ -50,34 +52,48 @@ public class MainScript : MonoBehaviour {
 
     public void OnGameStart()
     {
-        audioSource.PlayOneShot(buttonPress);
-        mainUI.SetActive(false);
+        //audioSource.PlayOneShot(buttonPress);
         title.SetActive(false);
         playButton.SetActive(false);
-        tutorialButton.SetActive(false);
-        tutorialImage.SetActive(false);
+        //tutorialButton.SetActive(false);
+        //tutorialImage.SetActive(false);
         quitButton.SetActive(false);
+        bubble.SetActive(true);
+        bouncingStar.SetActive(true);
+        scoreValue.SetActive(true);
         homeButton.SetActive(true);
-        CharacterController.speed = 10.0f;
+        mainObject.GetComponent<StarSpawner>().enabled = true;
+        CharacterController.speed = 100.0f;
     }
 
     public void OnTutorial()
     {
         title.SetActive(false);
-        playButtonAnimator.SetTrigger("isTutorial");
-        tutorialButton.SetActive(false);
-        tutorialImage.SetActive(true);
+        //tutorialButton.SetActive(false);
+        //tutorialImage.SetActive(true);
         quitButton.SetActive(false);
     }
 
     public void OnGameOver()
     {
-        scoreAnimator.SetTrigger("GameOver");
-        bgAnimator.SetTrigger("GameOver");
+        scoreAnimator.SetTrigger("gameOver");
+        mainObject.GetComponent<StarSpawner>().enabled = false;
         playAgainButton.SetActive(true);
         highscoreButton.SetActive(true);
+        GameObject[] shadowStars = GameObject.FindGameObjectsWithTag("Shadow Star");
+        foreach(GameObject star in shadowStars)
+        {
+            Destroy(star);
+        }
+        GameObject[] brightStars = GameObject.FindGameObjectsWithTag("Bright Star");
+        foreach (GameObject star in shadowStars)
+        {
+            Destroy(star);
+        }
+        bubble.SetActive(false);
+        bouncingStar.SetActive(false);
         homeButton.SetActive(false);
-        playAgainButtonAnimator.SetTrigger("GameOver");
+        //playAgainButtonAnimator.SetTrigger("GameOver");
     }
 
     public void OnPlayAgain()
@@ -87,13 +103,11 @@ public class MainScript : MonoBehaviour {
 
     public void OnHighscoreClick()
     {
-        audioSource.PlayOneShot(buttonPress);
-        mainUI.SetActive(true);
+        //audioSource.PlayOneShot(buttonPress);
         highscoreScreen.SetActive(true);
         highscoreButton.SetActive(false);
         scoreValue.SetActive(false);
         playAgainButton.SetActive(true);
-        playAgainButtonAnimator.SetTrigger("OnHighscoreClick");
     }
 
     public void OnQuit()

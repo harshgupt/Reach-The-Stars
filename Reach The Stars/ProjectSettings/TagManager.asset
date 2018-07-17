@@ -5,11 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - Bouncing Star
-  - Star Shadow
   - Wall Left
   - Wall Right
   - Wall Bottom
   - Bright Star
+  - Shadow Star
   layers:
   - Default
   - TransparentFX

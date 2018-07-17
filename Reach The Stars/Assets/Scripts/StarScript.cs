@@ -29,7 +29,7 @@ public class StarScript : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Star Shadow")
+        if (collision.gameObject.tag == "Shadow Star")
         {
             spriteRenderer = collision.GetComponent<SpriteRenderer>();
             spriteRenderer.sprite = brightStar;
@@ -38,7 +38,7 @@ public class StarScript : MonoBehaviour {
         }
         else if(collision.gameObject.tag == "Wall Bottom")
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            MainScript.isGameOver = true;
         }
     }
 }
