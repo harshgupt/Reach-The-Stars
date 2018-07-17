@@ -10,6 +10,7 @@ public class CharacterController : MonoBehaviour {
 
     void Update ()
     {
+        gameObject.transform.localScale = new Vector3(2, 2);
         if (Input.touchCount > 0)
         {
             Touch touch = Input.GetTouch(0);
@@ -57,6 +58,15 @@ public class CharacterController : MonoBehaviour {
                     transform.position = rightLimit;
                 }
             }
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag == "Bright Star")
+        {
+            Destroy(collision.gameObject);
+            ScoreScript.score += 1;
         }
     }
 }

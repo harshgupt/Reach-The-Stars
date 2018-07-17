@@ -8,15 +8,13 @@ public class StarScript : MonoBehaviour {
     public Sprite brightStar;
     public SpriteRenderer spriteRenderer;
 
-    private void Update()
-    {
-
-    }
+    public Animator bubbleAnimator;
 
     private void OnCollisionStay2D(Collision2D collision)
     {
         if(collision.gameObject.tag == "Player")
         {
+            bubbleAnimator.SetTrigger("bubbleHit");
             GetComponent<Rigidbody2D>().AddForce(Vector3.up * 250, ForceMode2D.Force);
         }
         else if(collision.gameObject.tag == "Wall Left")
