@@ -8,6 +8,9 @@ public class CharacterController : MonoBehaviour {
 
     public static float speed = 100f;
 
+    public AudioSource audioSource;
+    public AudioClip collectStar2;
+
     void Update ()
     {
         gameObject.transform.localScale = new Vector3(2, 2);
@@ -65,6 +68,7 @@ public class CharacterController : MonoBehaviour {
     {
         if(collision.gameObject.tag == "Bright Star")
         {
+            audioSource.PlayOneShot(collectStar2);
             Destroy(collision.gameObject);
             ScoreScript.score += 1;
         }

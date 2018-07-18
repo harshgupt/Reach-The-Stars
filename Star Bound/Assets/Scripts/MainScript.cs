@@ -23,8 +23,8 @@ public class MainScript : MonoBehaviour {
 
     public Animator scoreAnimator;
 
-    //public AudioSource audioSource;
-    //public AudioClip buttonPress;
+    public AudioSource audioSource;
+    public AudioClip buttonPress;
 
     private void Start()
     {
@@ -52,7 +52,7 @@ public class MainScript : MonoBehaviour {
 
     public void OnGameStart()
     {
-        //audioSource.PlayOneShot(buttonPress);
+        audioSource.PlayOneShot(buttonPress);
         title.SetActive(false);
         playButton.SetActive(false);
         //tutorialButton.SetActive(false);
@@ -93,7 +93,6 @@ public class MainScript : MonoBehaviour {
         bubble.SetActive(false);
         bouncingStar.SetActive(false);
         homeButton.SetActive(false);
-        //playAgainButtonAnimator.SetTrigger("GameOver");
     }
 
     public void OnPlayAgain()
@@ -103,7 +102,7 @@ public class MainScript : MonoBehaviour {
 
     public void OnHighscoreClick()
     {
-        //audioSource.PlayOneShot(buttonPress);
+        audioSource.PlayOneShot(buttonPress);
         highscoreScreen.SetActive(true);
         highscoreButton.SetActive(false);
         scoreValue.SetActive(false);

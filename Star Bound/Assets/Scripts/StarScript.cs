@@ -10,11 +10,16 @@ public class StarScript : MonoBehaviour {
 
     public Animator bubbleAnimator;
 
+    public AudioSource audioSource;
+    public AudioClip bubbleBounce;
+    public AudioClip collectStar1;
+
     private void OnCollisionStay2D(Collision2D collision)
     {
         if(collision.gameObject.tag == "Player")
         {
             bubbleAnimator.SetTrigger("bubbleHit");
+            audioSource.PlayOneShot(bubbleBounce);
             GetComponent<Rigidbody2D>().AddForce(Vector3.up * 250, ForceMode2D.Force);
         }
         else if(collision.gameObject.tag == "Wall Left")
@@ -31,6 +36,7 @@ public class StarScript : MonoBehaviour {
     {
         if (collision.gameObject.tag == "Shadow Star")
         {
+            audioSource.PlayOneShot(collectStar1);
             spriteRenderer = collision.GetComponent<SpriteRenderer>();
             spriteRenderer.sprite = brightStar;
             ScoreScript.score += 1;
