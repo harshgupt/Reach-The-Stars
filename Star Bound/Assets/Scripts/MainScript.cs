@@ -26,6 +26,8 @@ public class MainScript : MonoBehaviour {
     public AudioSource audioSource;
     public AudioClip buttonPress;
 
+    public Transform bouncingStarPrefab;
+
     private void Start()
     {
         title.SetActive(true);
@@ -47,6 +49,23 @@ public class MainScript : MonoBehaviour {
         {
             isGameOver = false;
             OnGameOver();
+        }
+
+        if(StarScript.decreaseSize || CharacterController.decreaseSize)
+        {
+            StarScript.decreaseSize = false;
+            CharacterController.decreaseSize = false;
+            bouncingStar.transform.localScale -= new Vector3(0.1f, 0.1f);
+            bubble.transform.localScale -= new Vector3(0.1f, 0.1f);
+        }
+
+        if(StarScript.increaseStarCount || CharacterController.increaseStarCount)
+        {
+            StarScript.increaseStarCount = false;
+            CharacterController.increaseStarCount = false;
+            Vector3 position = new Vector3(0, 5f);
+            var temp = Instantiate(bouncingStarPrefab, position, Quaternion.identity);
+            temp.gameObject.SetActive(true);
         }
     }
 
@@ -86,7 +105,12 @@ public class MainScript : MonoBehaviour {
             Destroy(star);
         }
         GameObject[] brightStars = GameObject.FindGameObjectsWithTag("Bright Star");
-        foreach (GameObject star in brightStars)
+        foreach(GameObject star in brightStars)
+        {
+            Destroy(star);
+        }
+        GameObject[] bouncingStars = GameObject.FindGameObjectsWithTag("Bouncing Star");
+        foreach(GameObject star in bouncingStars)
         {
             Destroy(star);
         }

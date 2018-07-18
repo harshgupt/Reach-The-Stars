@@ -26,7 +26,6 @@ public class ScoreScript : MonoBehaviour {
         {
             CheckAndSort();
         }
-
     }
 
     public void HighscoreInit()

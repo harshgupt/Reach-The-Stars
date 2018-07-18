@@ -11,6 +11,11 @@ public class CharacterController : MonoBehaviour {
     public AudioSource audioSource;
     public AudioClip collectStar2;
 
+    public static bool decreaseSize;
+    public static bool increaseStarCount;
+
+    public Animator bubbleAnimator;
+
     void Update ()
     {
         gameObject.transform.localScale = new Vector3(2, 2);
@@ -71,6 +76,22 @@ public class CharacterController : MonoBehaviour {
             audioSource.PlayOneShot(collectStar2);
             Destroy(collision.gameObject);
             ScoreScript.score += 1;
+            if (ScoreScript.score == 20 || ScoreScript.score == 40 || ScoreScript.score == 60 || ScoreScript.score == 80)
+            {
+                decreaseSize = true;
+            }
+            if (ScoreScript.score == 30 || ScoreScript.score == 50 || ScoreScript.score == 70 || ScoreScript.score == 90)
+            {
+                increaseStarCount = true;
+            }
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "Bouncing Star")
+        {
+            bubbleAnimator.SetTrigger("bubbleHit");
         }
     }
 }
