@@ -34,7 +34,11 @@ public class StarScript : MonoBehaviour {
         {
             GetComponent<Rigidbody2D>().AddForce(Vector3.left * 100, ForceMode2D.Force);
         }
-        else if(collision.gameObject.tag == "Bouncing Star")
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Bouncing Star")
         {
             Vector3 randVector = new Vector3(Random.Range(0f, 1f), Random.Range(0f, 1f)).normalized;
             Debug.Log(randVector);
