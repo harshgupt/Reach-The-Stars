@@ -24,7 +24,7 @@ public class ScoreScript : MonoBehaviour {
         scoreObject.text = score.ToString();
         if (MainScript.isGameOver)
         {
-            //CheckAndSort();
+            CheckAndSort();
         }
 
     }

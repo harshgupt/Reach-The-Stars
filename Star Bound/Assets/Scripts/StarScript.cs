@@ -11,7 +11,6 @@ public class StarScript : MonoBehaviour {
     public Animator bubbleAnimator;
 
     public AudioSource audioSource;
-    public AudioClip bubbleBounce;
     public AudioClip collectStar1;
 
     private void OnCollisionStay2D(Collision2D collision)
@@ -19,7 +18,6 @@ public class StarScript : MonoBehaviour {
         if(collision.gameObject.tag == "Player")
         {
             bubbleAnimator.SetTrigger("bubbleHit");
-            audioSource.PlayOneShot(bubbleBounce);
             GetComponent<Rigidbody2D>().AddForce(Vector3.up * 250, ForceMode2D.Force);
         }
         else if(collision.gameObject.tag == "Wall Left")
