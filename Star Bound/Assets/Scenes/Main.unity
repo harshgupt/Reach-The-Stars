@@ -1390,6 +1390,11 @@ Prefab:
       propertyPath: m_Name
       value: Bouncing Star (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 50794070338633320, guid: ad99b5f0d8af0904fa74aa9d745b60cd,
+        type: 2}
+      propertyPath: m_GravityScale
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ad99b5f0d8af0904fa74aa9d745b60cd, type: 2}
   m_IsPrefabParent: 0
