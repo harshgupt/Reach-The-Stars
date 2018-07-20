@@ -9,6 +9,8 @@ public class CharacterController : MonoBehaviour {
     public static float speed = 100f;
 
     public AudioSource audioSource;
+    public AudioSource audioSource2;
+    public AudioClip bubbleBounce;
     public AudioClip collectStar2;
 
     public static bool decreaseSize;
@@ -73,7 +75,7 @@ public class CharacterController : MonoBehaviour {
     {
         if(collision.gameObject.tag == "Bright Star")
         {
-            audioSource.PlayOneShot(collectStar2);
+            audioSource2.PlayOneShot(collectStar2);
             Destroy(collision.gameObject);
             ScoreScript.score += 1;
             if (ScoreScript.score == 20 || ScoreScript.score == 40 || ScoreScript.score == 60 || ScoreScript.score == 80)
@@ -92,6 +94,7 @@ public class CharacterController : MonoBehaviour {
         if(collision.gameObject.tag == "Bouncing Star")
         {
             bubbleAnimator.SetTrigger("bubbleHit");
+            audioSource.PlayOneShot(bubbleBounce);
         }
     }
 }

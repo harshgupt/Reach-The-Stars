@@ -8,8 +8,6 @@ public class MainScript : MonoBehaviour {
     public GameObject mainObject;
     public GameObject title;
     public GameObject playButton;
-    //public GameObject tutorialButton;
-    //public GameObject tutorialImage;
     public GameObject quitButton;
     public GameObject homeButton;
     public GameObject playAgainButton;
@@ -18,6 +16,10 @@ public class MainScript : MonoBehaviour {
     public GameObject scoreValue;
     public GameObject bubble;
     public GameObject bouncingStar;
+    public GameObject bouncingStar1;
+    public GameObject bouncingStar2;
+    public GameObject bouncingStar3;
+    public GameObject bouncingStar4;
 
     public static bool isGameOver;
 
@@ -25,6 +27,7 @@ public class MainScript : MonoBehaviour {
 
     public AudioSource audioSource;
     public AudioClip buttonPress;
+    public AudioClip gameOver;
 
     public Transform bouncingStarPrefab;
 
@@ -32,8 +35,6 @@ public class MainScript : MonoBehaviour {
     {
         title.SetActive(true);
         playButton.SetActive(true);
-        //tutorialButton.SetActive(true);
-        //tutorialImage.SetActive(false);
         quitButton.SetActive(true);
         bubble.SetActive(false);
         bouncingStar.SetActive(false);
@@ -56,6 +57,10 @@ public class MainScript : MonoBehaviour {
             StarScript.decreaseSize = false;
             CharacterController.decreaseSize = false;
             bouncingStar.transform.localScale -= new Vector3(0.1f, 0.1f);
+            bouncingStar1.transform.localScale -= new Vector3(0.1f, 0.1f);
+            bouncingStar2.transform.localScale -= new Vector3(0.1f, 0.1f);
+            bouncingStar3.transform.localScale -= new Vector3(0.1f, 0.1f);
+            bouncingStar4.transform.localScale -= new Vector3(0.1f, 0.1f);
             bubble.transform.localScale -= new Vector3(0.1f, 0.1f);
         }
 
@@ -63,9 +68,22 @@ public class MainScript : MonoBehaviour {
         {
             StarScript.increaseStarCount = false;
             CharacterController.increaseStarCount = false;
-            Vector3 position = new Vector3(0, 5f);
-            var temp = Instantiate(bouncingStarPrefab, position, Quaternion.identity);
-            temp.gameObject.SetActive(true);
+            if (!bouncingStar1.activeSelf)
+            {
+                bouncingStar1.SetActive(true);
+            }
+            else if (!bouncingStar2.activeSelf)
+            {
+                bouncingStar2.SetActive(true);
+            }
+            else if (!bouncingStar3.activeSelf)
+            {
+                bouncingStar3.SetActive(true);
+            }
+            else if (!bouncingStar4.activeSelf)
+            {
+                bouncingStar4.SetActive(true);
+            }
         }
     }
 
@@ -74,8 +92,6 @@ public class MainScript : MonoBehaviour {
         audioSource.PlayOneShot(buttonPress);
         title.SetActive(false);
         playButton.SetActive(false);
-        //tutorialButton.SetActive(false);
-        //tutorialImage.SetActive(false);
         quitButton.SetActive(false);
         bubble.SetActive(true);
         bouncingStar.SetActive(true);
@@ -88,13 +104,12 @@ public class MainScript : MonoBehaviour {
     public void OnTutorial()
     {
         title.SetActive(false);
-        //tutorialButton.SetActive(false);
-        //tutorialImage.SetActive(true);
         quitButton.SetActive(false);
     }
 
     public void OnGameOver()
     {
+        audioSource.PlayOneShot(gameOver);
         scoreAnimator.SetTrigger("gameOver");
         StarSpawner.spawnStars = false;
         playAgainButton.SetActive(true);
